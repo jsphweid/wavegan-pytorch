@@ -169,7 +169,9 @@ def save_samples(epoch_samples, epoch):
 
     for idx, sample in enumerate(epoch_samples):
         output_path = os.path.join(sample_dir, "{}.wav".format(idx + 1))
+        print('sample1', len(sample), sample, sample[0:500])
         sample = sample[0]
+        print('sample2', len(sample), sample, sample[0:500])
         sf.write(output_path, sample, sampling_rate)
 
 

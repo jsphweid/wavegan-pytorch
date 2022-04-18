@@ -127,6 +127,7 @@ class WaveGan_GP(object):
             self.generator.eval()
             with torch.no_grad():
                 fake = self.generator(fixed_noise).detach().cpu().numpy()
+            print('save_samples1', fake, first_iter)
             save_samples(fake, first_iter)
         self.generator.train()
         self.discriminator.train()
@@ -196,6 +197,7 @@ class WaveGan_GP(object):
                 with torch.no_grad():
                     latent_space_interpolation(self.generator, n_samples=2)
                     fake = self.generator(fixed_noise).detach().cpu().numpy()
+                print('save_samples2', fake, iter_indx)
                 save_samples(fake, iter_indx)
 
             if take_backup and iter_indx % backup_every_n_iters == 0:
